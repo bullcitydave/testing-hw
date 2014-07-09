@@ -5,7 +5,10 @@ var myString2 = "puppies";
 var myAnimals = [{type:'dog', name:'Herman'}, {type:'dog', name:'Moksha'}, {type:'cat', name:'Zellouisa'}, {type:'cat', name:'Aremid'}];
 var myAnimalNames = ['Herman','Moksha','Zellouisa','Aremid'];
 
-$('#variables').append('Variables created for testing');
+$('#variables').append('<p>Variables created for testing</p>');
+$('#variables').append('<p>myString1 = "kittens"</p>');
+$('#variables').append('<p>myAnimals = [{type:\'dog\', name:\'Herman\'},{type:\'dog\', name:\'Moksha\'}, {type:\'cat\', name:\'Zellouisa\'},{type:\'cat\', name:\'Aremid\'}]</p>');
+$('#variables').append('<p>myAnimalNames = [\'Herman\',\'Moksha\',\'Zellouisa\',\'Aremid\']</p>');
 
 (function () {
     'use strict';
@@ -26,6 +29,11 @@ $('#variables').append('Variables created for testing');
         describe('when passed only a single argument consisting of a string', function () {
           it('returns an array of undefined objects with length equal to the length of the string', function () {
             expect(_.pluck(myString1)).to.deep.equal([undefined,undefined,undefined,undefined,undefined,undefined,undefined])
+          });
+        });
+        describe('when passed a string followed by the length property', function () {
+          it('returns each of the letters of the string as distinct array items', function () {
+            expect(_.pluck(myString1,length)).to.deep.equal(['k','i','t','t','e','n','s']);
           });
         });
         describe('when called without an argument', function () {
@@ -131,10 +139,17 @@ $('#variables').append('Variables created for testing');
              expect(_.first()).to.be.an.empty.array;
             });
         });
+        describe('when called without an argument', function () {
+          it('returns an empty array', function () {
+             expect(_.first()).to.be.an.empty.array;
+            });
+        });
       });
     });
 })()
 
+
+_.last($("h1"))
     // describe('_.last', function () {
     //     describe('when passed a single argument of an array', function () {
     //         it('returns the last item in the array', function () {
