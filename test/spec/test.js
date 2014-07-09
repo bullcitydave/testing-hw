@@ -83,6 +83,55 @@ $('#variables').append('Variables created for testing');
             });
         });
       });
+      describe('_.first', function () {
+        describe('when passed a single argument consisting of an array', function () {
+          it('returns the first item in the array', function () {
+            expect(_.first(myAnimalNames)).to.equal('Herman');
+          });
+        });
+        describe('when passed an array with more than one item, followed by an integer', function () {
+          describe('value: 2', function () {
+            it('returns the first two items in the array', function () {
+              expect(_.first(myAnimalNames,2)).to.eql(['Herman','Moksha']);
+            });
+          });
+          describe('value equal to the length of the array', function () {
+            it('returns all of the items in the array', function () {
+              expect(_.first(myAnimalNames,myAnimalNames.length)).to.eql(['Herman','Moksha','Zellouisa','Aremid']);
+            });
+          });
+          describe('value greater than the length of the array', function () {
+            it('returns all of the items in the array', function () {
+              expect(_.first(myAnimalNames,myAnimalNames.length+5)).to.eql(['Herman','Moksha','Zellouisa','Aremid']);
+            });
+          });
+          describe('value: 0', function () {
+            it('returns an empty array', function () {
+              expect(_.first(myAnimalNames,0)).to.be.an.empty.array;
+            });
+          });
+          describe('value is a negative number', function () {
+            it('returns an empty array', function () {
+              expect(_.first(myAnimalNames,-1)).to.be.an.empty.array;
+            });
+          });
+        });
+        describe('when passed only a single argument consisting of a string', function () {
+          it('returns the first letter of the string', function () {
+            expect(_.first(myString1)).to.deep.equal("k");
+          });
+        });
+        describe('when passed a string followed by an integer(N)', function () {
+          it('returns each of the first N letters of the string as distinct array items', function () {
+            expect(_.first(myString1,4)).to.deep.equal(["k","i","t","t"]);
+          });
+        });
+        describe('when called without an argument', function () {
+          it('returns an empty array', function () {
+             expect(_.first()).to.be.an.empty.array;
+            });
+        });
+      });
     });
 })()
 
