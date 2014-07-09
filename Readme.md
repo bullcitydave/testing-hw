@@ -1,3 +1,3 @@
-## Yo, I'm a Readme
+## Iron Yard Homework Assignment: Building test cases with mocha 
 
-You should probably update me so people looking at your code have an idea what it is being used for :)
+Building test cases for Underscore methods and custom methods
