@@ -1,3 +1,3 @@
 ## Iron Yard Homework Assignment: Building test cases with mocha 
 
-Building test cases for Underscore methods and custom methods
+Building test cases for Underscore methods
