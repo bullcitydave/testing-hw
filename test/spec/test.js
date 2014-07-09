@@ -32,14 +32,17 @@ $('#variables').append('Variables created for testing');
              expect(_.pluck()).to.be.an.empty.array;
             });
         });
+      });
+      describe('_.last', function () {
         describe('when passed a single argument of an array', function () {
-            it('returns the last item in the array', function () {
-                expect(_.last(myAnimals)).to.eql({type:'cat', name:'Aremid'});
-            });
+          it('returns the last item in the array', function () {
+            expect(_.last(myAnimals)).to.eql({type:'cat', name:'Aremid'});
+          });
         });
       });
     });
-})();
+})()
+
     // describe('_.last', function () {
     //     describe('when passed a single argument of an array', function () {
     //         it('returns the last item in the array', function () {
