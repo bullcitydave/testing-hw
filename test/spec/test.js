@@ -5,10 +5,6 @@ var myString2 = "puppies";
 var myAnimals = [{type:'dog', name:'Herman'}, {type:'dog', name:'Moksha'}, {type:'cat', name:'Zellouisa'}, {type:'cat', name:'Aremid'}];
 var myAnimalNames = ['Herman','Moksha','Zellouisa','Aremid'];
 
-$('#variables').append('<p>Variables created for testing</p>');
-$('#variables').append('<p>myString1 = "kittens"</p>');
-$('#variables').append('<p>myAnimals = [{type:\'dog\', name:\'Herman\'},{type:\'dog\', name:\'Moksha\'}, {type:\'cat\', name:\'Zellouisa\'},{type:\'cat\', name:\'Aremid\'}]</p>');
-$('#variables').append('<p>myAnimalNames = [\'Herman\',\'Moksha\',\'Zellouisa\',\'Aremid\']</p>');
 
 (function () {
     'use strict';
@@ -145,6 +141,19 @@ $('#variables').append('<p>myAnimalNames = [\'Herman\',\'Moksha\',\'Zellouisa\',
             });
         });
       });
+      describe('Tests that did not pass', function () {
+        describe('Attempting to test for reference error', function () {
+          describe('_.pluck : when passed an argument that is undefined', function () {
+            it('throws a reference error', function () {
+                // var err = new ReferenceError('myAnimalz is not defined');
+                // expect(_.pluck(myAnimalz,'type')).to.throw(ReferenceError);
+                // expect(_.pluck(myAnimalz,'type')).to.throw(err);
+                   expect(_.pluck(myAnimalz,'type')).to.throw(ReferenceError('myAnimalz is not defined'));
+            });
+            // ***What is the correct expect syntax here***
+          });
+        })
+      })
     });
 })()
 
@@ -158,7 +167,7 @@ _.last($("h1"))
     //     });
     // })
 
-        // describe('when passed only a single argument that is undefined', function () {
+        // describe('when passed an  argument that is undefined', function () {
         //     it('throws a reference error', function () {
         //         // var err = new ReferenceError('myAnimalz is not defined');
         //         // expect(_.pluck(myAnimalz,'type')).to.throw(ReferenceError);
@@ -175,15 +184,13 @@ _.last($("h1"))
         // });   // how would I get this to work?
 
 
-//
-// (function () {
-//     'use strict';
-//
-//     describe('Testing underscore.js\'s _.last method', function () {
-//         describe('when passed a single argument of an array', function () {
-//             it('returns the last item in the array', function () {
-//                 expect(_.last(myAnimals)).to.eql({type:'cat', name:'Aremid'});
-//             });
-//         });
-//     })
-// })()
+
+
+
+
+// Adding variables used to top
+
+$('#variables').append('<p>Variables created for testing</p>');
+$('#variables').append('<p>myString1 = "kittens"</p>');
+$('#variables').append('<p>myAnimals = [{type:\'dog\', name:\'Herman\'},{type:\'dog\', name:\'Moksha\'}, {type:\'cat\', name:\'Zellouisa\'},{type:\'cat\', name:\'Aremid\'}]</p>');
+$('#variables').append('<p>myAnimalNames = [\'Herman\',\'Moksha\',\'Zellouisa\',\'Aremid\']</p>');
