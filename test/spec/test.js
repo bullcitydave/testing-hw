@@ -3,6 +3,7 @@
 var myString1 = "kittens";
 var myString2 = "puppies";
 var myAnimals = [{type:'dog', name:'Herman'}, {type:'dog', name:'Moksha'}, {type:'cat', name:'Zellouisa'}, {type:'cat', name:'Aremid'}];
+var myAnimalNames = ['Herman','Moksha','Zellouisa','Aremid'];
 
 $('#variables').append('Variables created for testing');
 
@@ -34,10 +35,52 @@ $('#variables').append('Variables created for testing');
         });
       });
       describe('_.last', function () {
-        describe('when passed a single argument of an array', function () {
+        describe('when passed a single argument consisting of an array', function () {
           it('returns the last item in the array', function () {
-            expect(_.last(myAnimals)).to.eql({type:'cat', name:'Aremid'});
+            expect(_.last(myAnimalNames)).to.equal('Aremid');
           });
+        });
+        describe('when passed an array with more than one item, followed by an integer', function () {
+          describe('value: 2', function () {
+            it('returns the last two items in the array', function () {
+              expect(_.last(myAnimalNames,2)).to.eql(['Zellouisa','Aremid']);
+            });
+          });
+          describe('value equal to the length of the array', function () {
+            it('returns all of the items in the array', function () {
+              expect(_.last(myAnimalNames,myAnimalNames.length)).to.eql(['Herman','Moksha','Zellouisa','Aremid']);
+            });
+          });
+          describe('value greater than the length of the array', function () {
+            it('returns all of the items in the array', function () {
+              expect(_.last(myAnimalNames,myAnimalNames.length+5)).to.eql(['Herman','Moksha','Zellouisa','Aremid']);
+            });
+          });
+          describe('value: 0', function () {
+            it('returns an empty array', function () {
+              expect(_.last(myAnimalNames,0)).to.be.an.empty.array;
+            });
+          });
+          describe('value is a negative number', function () {
+            it('returns an empty array', function () {
+              expect(_.last(myAnimalNames,-1)).to.be.an.empty.array;
+            });
+          });
+        });
+        describe('when passed only a single argument consisting of a string', function () {
+          it('returns the last letter of the string', function () {
+            expect(_.last(myString1)).to.deep.equal("s");
+          });
+        });
+        describe('when passed a string followed by an integer(N)', function () {
+          it('returns each of the last N letters of the string as distinct array items', function () {
+            expect(_.last(myString1,4)).to.deep.equal(["t","e","n","s"]);
+          });
+        });
+        describe('when called without an argument', function () {
+          it('returns an empty array', function () {
+             expect(_.last()).to.be.an.empty.array;
+            });
         });
       });
     });
